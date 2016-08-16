@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+/logs
+*.db
+*.zip
+
+npm-debug.log
