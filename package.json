@@ -1,6 +1,6 @@
 {
   "name": "image-url-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extract the image URLs from a given HTML document (including CSS background images)",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,5 @@
     "url": "untropy.net"
   },
   "license": "MIT",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
