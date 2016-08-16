@@ -34,4 +34,4 @@ var getImageUrlsFromDocument = function(opHtml) {
   })));
 };
 
-exports.getImagesUrlsFromDocument = getImageUrlsFromDocument;
+exports.getImageUrlsFromDocument = getImageUrlsFromDocument;
