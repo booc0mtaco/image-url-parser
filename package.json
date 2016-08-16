@@ -6,15 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": "booc0mtaco/image-url-parser",
   "keywords": [
     "dom",
     "html",
     "image",
     "url"
   ],
-  "author": "Andrew Holloway <booc0mtaco@gmail.com>",
+  "author": {
+    "name": "Andrew Holloway",
+    "email": "booc0mtaco@gmail.com",
+    "url": "untropy.net"
+  },
   "license": "MIT",
   "dependencies": {
-    "jsdom": "^9.4.2"
   }
 }
