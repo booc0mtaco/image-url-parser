@@ -2,6 +2,7 @@
 var docWindow = window;
 var doc = docWindow.document;
 var DOMParser = docWindow.DOMParser;
+var exports = exports || undefined;
 
 // simple has filter check on strings
 function _uniq(arr) {
@@ -34,4 +35,4 @@ var getImageUrlsFromDocument = function(opHtml) {
   })));
 };
 
-exports.getImageUrlsFromDocument = getImageUrlsFromDocument;
+if (exports) exports.getImageUrlsFromDocument = getImageUrlsFromDocument;
