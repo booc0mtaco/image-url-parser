@@ -22,8 +22,7 @@ function _uniq(arr) {
 
 var getImageUrlsFromDocument = function(opHtml) {
   // by default, this parses the document. Otherwise, the string passed in
-  var target = doc;
-  var set;
+  var target = doc, set;
   if (opHtml !== undefined) {
     if (typeof DOMParser !== 'undefined') {
       target = new DOMParser().parseFromString(opHtml, 'text/html');
@@ -33,6 +32,10 @@ var getImageUrlsFromDocument = function(opHtml) {
       docWindow = target.defaultView;
 
     }
+  } else {
+    querySelectorAll = function(queryToRun, docObject) {
+      return docObject.querySelectorAll(queryToRun);		  
+    };
   }
 
   // Try and find all image-looking resources on a page, and return a set
