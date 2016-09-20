@@ -1,6 +1,6 @@
 {
   "name": "image-url-parser",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Extract the image URLs from a given HTML document (including CSS background images)",
   "main": "index.js",
   "scripts": {
