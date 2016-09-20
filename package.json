@@ -4,7 +4,7 @@
   "description": "Extract the image URLs from a given HTML document (including CSS background images)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": "booc0mtaco/image-url-parser",
   "keywords": [
@@ -19,5 +19,11 @@
     "url": "untropy.net"
   },
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "jsdom": "^9.5.0",
+    "query-selector": "^1.0.9"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2"
+  }
 }

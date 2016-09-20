@@ -14,6 +14,12 @@ Using this on a document or HTML string will return an arry containing all the u
 npm -i image-url-parser
 ```
 
+# Testing
+
+```
+mocha
+```
+
 # License
 
 MIT © [Andrew Holloway](mailto:booc0mtaco@gmail.com)

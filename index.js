@@ -1,10 +1,18 @@
+var querySelectorAll, docWindow, doc;
 // Constants for web environment
-var docWindow = window;
-var doc = docWindow.document;
-var DOMParser = docWindow.DOMParser;
+if (typeof window !== 'undefined') {
+  docWindow = window;
+  doc = docWindow.document;
+  var DOMParser = docWindow.DOMParser;
+} else {
+  var querySelectorAll = require('query-selector');
+  var jsdom = require('jsdom').jsdom;
+}
+
 var exports = exports || undefined;
 
 // simple has filter check on strings
+// we put it out here, so it doesn't get re-created every time the parser is called
 function _uniq(arr) {
   var hasBeenSeen = {};
   return arr.filter(function(item) {
@@ -15,12 +23,20 @@ function _uniq(arr) {
 var getImageUrlsFromDocument = function(opHtml) {
   // by default, this parses the document. Otherwise, the string passed in
   var target = doc;
+  var set;
   if (opHtml !== undefined) {
-    target = new DOMParser().parseFromString(opHtml, 'text/html');
+    if (typeof DOMParser !== 'undefined') {
+      target = new DOMParser().parseFromString(opHtml, 'text/html');
+      querySelectorAll = target.querySelectorAll;
+    } else {
+      target = jsdom(opHtml);
+      docWindow = target.defaultView;
+
+    }
   }
 
   // Try and find all image-looking resources on a page, and return a set
-  return _uniq(Array.prototype.slice.call(target.querySelectorAll('*')).filter(function(element) {
+  return _uniq(Array.prototype.slice.call(querySelectorAll('*', target)).filter(function(element) {
     // check for cases where no image is defined
     return docWindow.getComputedStyle(element).backgroundImage !== 'none';
   }).filter(function(element) {
@@ -35,4 +51,6 @@ var getImageUrlsFromDocument = function(opHtml) {
   })));
 };
 
-if (exports) exports.getImageUrlsFromDocument = getImageUrlsFromDocument;
+if (typeof exports !== 'undefined') {
+  exports.getImageUrlsFromDocument = getImageUrlsFromDocument;
+}
